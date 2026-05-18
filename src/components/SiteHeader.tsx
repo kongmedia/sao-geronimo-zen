@@ -49,27 +49,19 @@ export function SiteHeader() {
               className="hidden lg:flex items-center gap-9 text-[11px] tracking-[0.24em] uppercase flex-1 justify-center"
               onMouseLeave={() => setMegaOpen(false)}
             >
-              <Link to="/" className="link-underline hover:text-gold transition">Início</Link>
-              <Link
-                to="/loja"
-                onMouseEnter={() => setMegaOpen(false)}
-                className="link-underline hover:text-gold transition"
-              >
-                Loja
-              </Link>
+              <Link to="/" className="link-underline hover:text-primary transition">Início</Link>
               <button
                 onMouseEnter={() => setMegaOpen(true)}
                 onFocus={() => setMegaOpen(true)}
-                className="inline-flex items-center gap-1.5 hover:text-gold transition"
+                className="inline-flex items-center gap-1.5 hover:text-primary transition"
                 aria-expanded={megaOpen}
                 aria-haspopup="true"
               >
                 Categorias
                 <ChevronDown className={`h-3 w-3 transition-transform ${megaOpen ? "rotate-180" : ""}`} strokeWidth={1.8} />
               </button>
-              <Link to="/sobre" onMouseEnter={() => setMegaOpen(false)} className="link-underline hover:text-gold transition">Sobre</Link>
-              <Link to="/blog" onMouseEnter={() => setMegaOpen(false)} className="link-underline hover:text-gold transition">Blog</Link>
-              <Link to="/contato" onMouseEnter={() => setMegaOpen(false)} className="link-underline hover:text-gold transition">Contato</Link>
+              <Link to="/favoritos" onMouseEnter={() => setMegaOpen(false)} className="link-underline hover:text-primary transition">Favoritos</Link>
+              <Link to="/contato" onMouseEnter={() => setMegaOpen(false)} className="link-underline hover:text-primary transition">Contato</Link>
             </nav>
 
             <div className="flex items-center gap-1 lg:gap-1.5 shrink-0">
