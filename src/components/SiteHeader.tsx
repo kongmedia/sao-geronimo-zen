@@ -53,12 +53,11 @@ export function SiteHeader() {
 
   const NavLink = ({ to, params, label }: { to: string; params?: Record<string, string>; label: string }) => {
     const active = params ? location.pathname === `/categoria/${params.slug}` : isActive(to);
+    const props: Record<string, unknown> = { to };
+    if (params) props.params = params;
     return (
       <Link
-        // @ts-expect-error generic link
-        to={to}
-        // @ts-expect-error generic params
-        params={params}
+        {...(props as { to: string })}
         onMouseEnter={() => setMegaOpen(false)}
         className={`relative hover:text-primary transition whitespace-nowrap uppercase pb-1 ${
           active ? "text-primary after:absolute after:left-0 after:right-0 after:-bottom-0.5 after:h-[2px] after:bg-gold" : ""
