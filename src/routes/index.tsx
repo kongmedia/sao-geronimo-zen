@@ -18,7 +18,7 @@ export const Route = createFileRoute("/")({
 });
 
 function Home() {
-  const heroCategories = categories.slice(0, 6);
+  const heroCategories = categories.slice(0, 10);
   const grid = products.slice(0, 8);
 
   return (
