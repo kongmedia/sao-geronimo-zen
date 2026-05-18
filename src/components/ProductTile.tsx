@@ -61,7 +61,8 @@ export function ProductTile({ product, index = 0 }: { product: Product; index?: 
             className="mt-3 w-full h-10 rounded-[10px] bg-primary text-primary-foreground text-[11px] tracking-[0.22em] uppercase inline-flex items-center justify-center gap-2 hover:bg-blue-deep transition-colors"
           >
             <ShoppingBag className="h-3.5 w-3.5" strokeWidth={1.8} />
-            Comprar agora
+            <span className="sm:hidden">Comprar</span>
+            <span className="hidden sm:inline">Comprar agora</span>
           </button>
         </div>
       </Link>

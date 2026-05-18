@@ -24,7 +24,7 @@ function Favs() {
           </Link>
         </div>
       ) : (
-        <div className="mt-12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-10">
+        <div className="mt-12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-10">
           {list.map((p, i) => <ProductTile key={p!.id} product={p!} index={i} />)}
         </div>
       )}
