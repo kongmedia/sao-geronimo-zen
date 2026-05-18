@@ -193,13 +193,23 @@
     border: 1px solid oklch(0.18 0.012 80 / 0.06);
   }
   .glass-strong {
-    background-color: oklch(0.985 0.008 85 / 0.55) !important;
-    backdrop-filter: blur(28px) saturate(180%) !important;
-    -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
-    border-bottom: 1px solid oklch(0.30 0.10 258 / 0.08);
+    background:
+      linear-gradient(180deg, oklch(1 0 0 / 0.58), oklch(0.985 0.008 85 / 0.44)),
+      oklch(0.985 0.008 85 / 0.46) !important;
+    backdrop-filter: blur(34px) saturate(190%) contrast(1.03) !important;
+    -webkit-backdrop-filter: blur(34px) saturate(190%) contrast(1.03) !important;
+    border-bottom: 1px solid oklch(1 0 0 / 0.34);
+    box-shadow: 0 1px 0 oklch(0.30 0.10 258 / 0.08), 0 18px 45px -30px oklch(0.30 0.10 258 / 0.45);
     -webkit-mask-image: -webkit-radial-gradient(white, black);
   }
-  .page-fade { animation: pageFade 0.5s cubic-bezier(0.22, 1, 0.36, 1) both; }
+  .glass-strong::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: linear-gradient(115deg, oklch(1 0 0 / 0.28), transparent 35%, oklch(0.80 0.16 92 / 0.10));
+  }
+  .page-fade { animation: pageFade 0.55s cubic-bezier(0.22, 1, 0.36, 1) both; }
   .preloader-fade-out { animation: preloaderOut 0.6s ease-out 0.9s both; }
   .shadow-glow { box-shadow: var(--shadow-glow); }
   .shadow-elevated { box-shadow: var(--shadow-elevated); }
