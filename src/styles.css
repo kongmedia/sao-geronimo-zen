@@ -272,10 +272,6 @@
   0% { transform: translateY(100vh) translateX(0); opacity: 0 }
   10% { opacity: 0.6 }
   90% { opacity: 0.4 }
-@keyframes particle {
-  0% { transform: translateY(100vh) translateX(0); opacity: 0 }
-  10% { opacity: 0.6 }
-  90% { opacity: 0.4 }
   100% { transform: translateY(-10vh) translateX(40px); opacity: 0 }
 }
 @keyframes pageFade {
