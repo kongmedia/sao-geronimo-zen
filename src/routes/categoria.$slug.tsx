@@ -1,5 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { useMemo, useState } from "react";
 import { ProductTile } from "@/components/ProductTile";
+import { FilterSidebar, defaultFilters, type Filters } from "@/components/FilterSidebar";
 import { categories, productsByCategory } from "@/lib/catalog";
 
 export const Route = createFileRoute("/categoria/$slug")({
@@ -27,20 +29,28 @@ export const Route = createFileRoute("/categoria/$slug")({
 
 function CategoryPage() {
   const { cat } = Route.useLoaderData();
-  const list = productsByCategory(cat.slug);
+  const all = productsByCategory(cat.slug);
+  const [filters, setFilters] = useState<Filters>(defaultFilters);
+
+  const list = useMemo(() => all.filter((p) => {
+    if (p.price < filters.minPrice || p.price > filters.maxPrice) return false;
+    if (filters.premiumOnly && !p.premium) return false;
+    if (p.rating < filters.minRating) return false;
+    return true;
+  }), [all, filters]);
 
   return (
     <div>
-      <section className="relative max-w-[1400px] mx-auto px-6 lg:px-10 pt-12 pb-16">
-        <Link to="/categorias" className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground hover:text-gold transition">
+      <section className="relative max-w-[1400px] mx-auto px-6 lg:px-10 pt-12 pb-10">
+        <Link to="/categorias" className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground hover:text-primary transition">
           ← Categorias
         </Link>
-        <h1 className="mt-6 font-serif text-5xl md:text-7xl">{cat.name}</h1>
-        <p className="mt-6 max-w-xl text-muted-foreground">{cat.blurb}</p>
+        <h1 className="mt-6 font-serif text-5xl md:text-6xl">{cat.name}</h1>
+        <p className="mt-4 max-w-xl text-muted-foreground">{cat.blurb}</p>
         {cat.subcategories && (
-          <div className="mt-8 flex flex-wrap gap-2">
+          <div className="mt-6 flex flex-wrap gap-2">
             {cat.subcategories.map((s: string) => (
-              <span key={s} className="px-3 py-1.5 rounded-full hairline text-[11px] tracking-[0.2em] uppercase text-muted-foreground">
+              <span key={s} className="px-3 py-1.5 rounded-[10px] border border-border text-[11px] tracking-[0.18em] uppercase text-muted-foreground">
                 {s}
               </span>
             ))}
@@ -48,16 +58,20 @@ function CategoryPage() {
         )}
       </section>
 
-      <section className="max-w-[1400px] mx-auto px-6 lg:px-10 pb-24">
-        {list.length === 0 ? (
-          <div className="py-32 text-center text-muted-foreground">
-            Curadoria desta categoria em preparação. Em breve.
-          </div>
-        ) : (
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-10">
-            {list.map((p, i) => <ProductTile key={p.id} product={p} index={i} />)}
-          </div>
-        )}
+      <section className="max-w-[1400px] mx-auto px-6 lg:px-10 pb-24 flex gap-10">
+        <FilterSidebar filters={filters} onChange={setFilters} showCategories={false} />
+        <div className="flex-1 min-w-0">
+          <div className="mb-6 text-xs text-muted-foreground">{list.length} peças</div>
+          {list.length === 0 ? (
+            <div className="py-32 text-center text-muted-foreground">
+              Curadoria desta categoria em preparação. Em breve.
+            </div>
+          ) : (
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-5 md:gap-7">
+              {list.map((p, i) => <ProductTile key={p.id} product={p} index={i} />)}
+            </div>
+          )}
+        </div>
       </section>
     </div>
   );

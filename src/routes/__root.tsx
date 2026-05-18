@@ -13,6 +13,7 @@ import { CartProvider } from "@/lib/cart";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { WhatsAppFab } from "@/components/WhatsAppFab";
+import { CartDrawer } from "@/components/CartDrawer";
 
 function NotFoundComponent() {
   return (
@@ -25,7 +26,7 @@ function NotFoundComponent() {
         </p>
         <Link
           to="/"
-          className="mt-8 inline-flex h-11 items-center justify-center rounded-sm bg-foreground text-background px-6 text-xs tracking-[0.25em] uppercase hover:bg-gold transition"
+          className="mt-8 inline-flex h-11 items-center justify-center rounded-[10px] bg-foreground text-background px-6 text-xs tracking-[0.25em] uppercase hover:bg-gold transition"
         >
           Retornar ao início
         </Link>
@@ -45,9 +46,9 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
         <div className="mt-6 flex gap-2 justify-center">
           <button
             onClick={() => { router.invalidate(); reset(); }}
-            className="h-10 px-5 rounded-sm bg-foreground text-background text-xs tracking-[0.2em] uppercase"
+            className="h-10 px-5 rounded-[10px] bg-foreground text-background text-xs tracking-[0.2em] uppercase"
           >Tentar novamente</button>
-          <a href="/" className="h-10 px-5 rounded-sm hairline text-xs tracking-[0.2em] uppercase inline-flex items-center">Início</a>
+          <a href="/" className="h-10 px-5 rounded-[10px] hairline text-xs tracking-[0.2em] uppercase inline-flex items-center">Início</a>
         </div>
       </div>
     </div>
@@ -101,6 +102,7 @@ function RootComponent() {
           </main>
           <SiteFooter />
           <WhatsAppFab />
+          <CartDrawer />
         </div>
       </CartProvider>
     </QueryClientProvider>

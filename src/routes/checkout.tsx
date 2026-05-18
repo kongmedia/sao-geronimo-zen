@@ -21,7 +21,7 @@ function Checkout() {
         <div className="font-serif text-6xl text-gold-gradient">✦</div>
         <h1 className="mt-6 font-serif text-4xl">Pedido recebido</h1>
         <p className="mt-4 text-muted-foreground">Em silêncio, preparamos sua peça com intenção. Você receberá uma confirmação por e-mail.</p>
-        <Link to="/" className="mt-8 inline-flex h-11 px-6 rounded-sm bg-foreground text-background text-xs tracking-[0.25em] uppercase items-center hover:bg-gold transition">
+        <Link to="/" className="mt-8 inline-flex h-11 px-6 rounded-[10px] bg-foreground text-background text-xs tracking-[0.25em] uppercase items-center hover:bg-gold transition">
           Voltar ao início
         </Link>
       </section>
@@ -70,7 +70,7 @@ function Checkout() {
               <Field label="Nome impresso" />
             </>
           )}
-          <button className="mt-6 w-full h-12 rounded-sm bg-foreground text-background text-xs tracking-[0.25em] uppercase hover:bg-gold transition">
+          <button className="mt-6 w-full h-12 rounded-[10px] bg-foreground text-background text-xs tracking-[0.25em] uppercase hover:bg-gold transition">
             {step === 3 ? "Pagar com presença" : "Continuar"}
           </button>
         </form>
@@ -104,7 +104,7 @@ function Field({ label, type = "text", placeholder }: { label: string; type?: st
         required
         type={type}
         placeholder={placeholder}
-        className="mt-2 w-full h-12 px-4 rounded-sm bg-background hairline text-sm focus:outline-none focus:border-gold transition"
+        className="mt-2 w-full h-12 px-4 rounded-[10px] bg-background hairline text-sm focus:outline-none focus:border-gold transition"
       />
     </label>
   );

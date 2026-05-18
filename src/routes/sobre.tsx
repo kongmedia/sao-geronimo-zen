@@ -53,7 +53,7 @@ function About() {
       </section>
 
       <section className="max-w-[1400px] mx-auto px-6 lg:px-10 pb-32 text-center">
-        <Link to="/loja" className="inline-flex h-12 px-8 rounded-sm bg-foreground text-background text-xs tracking-[0.25em] uppercase hover:bg-gold transition items-center">
+        <Link to="/loja" className="inline-flex h-12 px-8 rounded-[10px] bg-foreground text-background text-xs tracking-[0.25em] uppercase hover:bg-gold transition items-center">
           Entrar na curadoria
         </Link>
       </section>

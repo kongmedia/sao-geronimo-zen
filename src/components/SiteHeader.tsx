@@ -5,7 +5,7 @@ import { useCart } from "@/lib/cart";
 import { categories } from "@/lib/catalog";
 
 export function SiteHeader() {
-  const { count, favCount } = useCart();
+  const { count, favCount, openDrawer } = useCart();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [megaOpen, setMegaOpen] = useState(false);
@@ -49,27 +49,19 @@ export function SiteHeader() {
               className="hidden lg:flex items-center gap-9 text-[11px] tracking-[0.24em] uppercase flex-1 justify-center"
               onMouseLeave={() => setMegaOpen(false)}
             >
-              <Link to="/" className="link-underline hover:text-gold transition">Início</Link>
-              <Link
-                to="/loja"
-                onMouseEnter={() => setMegaOpen(false)}
-                className="link-underline hover:text-gold transition"
-              >
-                Loja
-              </Link>
+              <Link to="/" className="link-underline hover:text-primary transition">Início</Link>
               <button
                 onMouseEnter={() => setMegaOpen(true)}
                 onFocus={() => setMegaOpen(true)}
-                className="inline-flex items-center gap-1.5 hover:text-gold transition"
+                className="inline-flex items-center gap-1.5 hover:text-primary transition"
                 aria-expanded={megaOpen}
                 aria-haspopup="true"
               >
                 Categorias
                 <ChevronDown className={`h-3 w-3 transition-transform ${megaOpen ? "rotate-180" : ""}`} strokeWidth={1.8} />
               </button>
-              <Link to="/sobre" onMouseEnter={() => setMegaOpen(false)} className="link-underline hover:text-gold transition">Sobre</Link>
-              <Link to="/blog" onMouseEnter={() => setMegaOpen(false)} className="link-underline hover:text-gold transition">Blog</Link>
-              <Link to="/contato" onMouseEnter={() => setMegaOpen(false)} className="link-underline hover:text-gold transition">Contato</Link>
+              <Link to="/favoritos" onMouseEnter={() => setMegaOpen(false)} className="link-underline hover:text-primary transition">Favoritos</Link>
+              <Link to="/contato" onMouseEnter={() => setMegaOpen(false)} className="link-underline hover:text-primary transition">Contato</Link>
             </nav>
 
             <div className="flex items-center gap-1 lg:gap-1.5 shrink-0">
@@ -85,12 +77,17 @@ export function SiteHeader() {
                   <span className="absolute -top-0.5 -right-0.5 text-[9px] bg-gold text-white rounded-full h-4 w-4 flex items-center justify-center">{favCount}</span>
                 )}
               </Link>
-              <Link to="/carrinho" aria-label="Sacola" className="h-9 w-9 flex items-center justify-center hover:text-gold transition relative">
+              <button
+                type="button"
+                onClick={openDrawer}
+                aria-label="Sacola"
+                className="h-9 w-9 flex items-center justify-center hover:text-primary transition relative"
+              >
                 <ShoppingBag className="h-4 w-4" strokeWidth={1.5} />
                 {count > 0 && (
-                  <span className="absolute -top-0.5 -right-0.5 text-[9px] bg-gold text-white rounded-full h-4 w-4 flex items-center justify-center">{count}</span>
+                  <span className="absolute -top-0.5 -right-0.5 text-[9px] bg-primary text-primary-foreground rounded-full h-4 w-4 flex items-center justify-center">{count}</span>
                 )}
-              </Link>
+              </button>
             </div>
           </div>
 
@@ -167,10 +164,8 @@ export function SiteHeader() {
             <nav className="mt-12 flex flex-col gap-4 text-2xl font-serif">
               {[
                 ["/", "Início"],
-                ["/loja", "Loja"],
                 ["/categorias", "Categorias"],
-                ["/sobre", "Sobre"],
-                ["/blog", "Blog"],
+                ["/favoritos", "Favoritos"],
                 ["/contato", "Contato"],
               ].map(([to, label]) => (
                 <Link key={to} to={to} onClick={() => setOpen(false)} className="border-b border-border pb-3">

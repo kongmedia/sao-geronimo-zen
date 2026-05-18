@@ -13,6 +13,9 @@ type CartCtx = {
   toggleFav: (id: string) => void;
   count: number;
   favCount: number;
+  drawerOpen: boolean;
+  openDrawer: () => void;
+  closeDrawer: () => void;
 };
 
 const Ctx = createContext<CartCtx | null>(null);
@@ -20,6 +23,7 @@ const Ctx = createContext<CartCtx | null>(null);
 export function CartProvider({ children }: { children: ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([]);
   const [favorites, setFavorites] = useState<FavSet>([]);
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
   useEffect(() => {
     try {
@@ -40,13 +44,15 @@ export function CartProvider({ children }: { children: ReactNode }) {
     () => ({
       items,
       favorites,
-      add: (id, qty = 1) =>
+      add: (id, qty = 1) => {
         setItems((p) => {
           const e = p.find((x) => x.id === id);
           return e
             ? p.map((x) => (x.id === id ? { ...x, qty: x.qty + qty } : x))
             : [...p, { id, qty }];
-        }),
+        });
+        setDrawerOpen(true);
+      },
       remove: (id) => setItems((p) => p.filter((x) => x.id !== id)),
       setQty: (id, qty) =>
         setItems((p) => p.map((x) => (x.id === id ? { ...x, qty: Math.max(1, qty) } : x))),
@@ -55,8 +61,11 @@ export function CartProvider({ children }: { children: ReactNode }) {
         setFavorites((p) => (p.includes(id) ? p.filter((x) => x !== id) : [...p, id])),
       count: items.reduce((s, x) => s + x.qty, 0),
       favCount: favorites.length,
+      drawerOpen,
+      openDrawer: () => setDrawerOpen(true),
+      closeDrawer: () => setDrawerOpen(false),
     }),
-    [items, favorites],
+    [items, favorites, drawerOpen],
   );
 
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;

@@ -19,7 +19,7 @@ function Favs() {
       {list.length === 0 ? (
         <div className="mt-20 text-center glass p-12 rounded-md">
           <p className="font-serif text-2xl">Ainda não há favoritos.</p>
-          <Link to="/loja" className="mt-6 inline-flex h-11 px-6 rounded-sm bg-foreground text-background text-xs tracking-[0.25em] uppercase items-center hover:bg-gold transition">
+          <Link to="/loja" className="mt-6 inline-flex h-11 px-6 rounded-[10px] bg-foreground text-background text-xs tracking-[0.25em] uppercase items-center hover:bg-gold transition">
             Explorar a loja
           </Link>
         </div>

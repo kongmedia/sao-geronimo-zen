@@ -1,8 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ImageIcon, Sparkles, Star } from "lucide-react";
-import { Particles } from "@/components/Particles";
 import { ProductTile } from "@/components/ProductTile";
 import { categories, featured, products } from "@/lib/catalog";
+import heroBanner from "@/assets/hero-banner.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -21,53 +21,50 @@ function Home() {
 
   return (
     <div className="overflow-hidden">
-      {/* HERO */}
-      <section className="relative min-h-[92vh] flex items-end pb-24 bg-hero grain">
-        <Particles />
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/3 left-1/2 -translate-x-1/2 h-[520px] w-[520px] rounded-full bg-amber-glow/10 blur-[120px] animate-glow-pulse" />
-          <div className="absolute -bottom-32 right-0 h-[400px] w-[400px] rounded-full bg-accent/40 blur-[120px]" />
-        </div>
-        <div className="absolute inset-x-0 top-32 flex justify-center pointer-events-none">
-          <div className="font-serif text-[18vw] leading-none tracking-tighter opacity-[0.04] select-none">
-            Gerônimo
+      {/* HERO BANNER */}
+      <section className="relative bg-secondary">
+        <div className="max-w-[1400px] mx-auto px-6 lg:px-10 pt-6 pb-10">
+          <div className="relative rounded-[10px] overflow-hidden shadow-elevated">
+            <img
+              src={heroBanner}
+              alt="São Gerônimo — Artigos místicos e religiosos"
+              className="w-full h-auto block"
+            />
           </div>
-        </div>
-        <div className="relative max-w-[1400px] mx-auto px-6 lg:px-10 w-full">
-          <div className="max-w-3xl animate-fade-up">
-            <div className="flex items-center gap-3 text-[11px] tracking-[0.3em] uppercase text-gold">
-              <Sparkles className="h-3 w-3" strokeWidth={1.5} /> Coleção 2026 · Edição Aurora
-            </div>
-            <h1 className="mt-6 font-serif text-5xl md:text-7xl lg:text-[88px] leading-[0.95]">
-              Espiritualidade, <span className="italic text-gold-gradient">energia</span><br />
-              e beleza em cada detalhe.
-            </h1>
-            <p className="mt-8 max-w-xl text-base md:text-lg text-muted-foreground leading-relaxed">
-              Artigos místicos e religiosos selecionados para elevar ambientes, rituais e conexões espirituais. Há quinze anos.
-            </p>
-            <div className="mt-10 flex flex-wrap gap-4">
-              <Link to="/loja" className="group h-12 px-7 rounded-sm bg-foreground text-background text-xs tracking-[0.25em] uppercase inline-flex items-center gap-3 hover:bg-gold transition-colors">
-                Explorar Produtos
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" strokeWidth={1.5} />
-              </Link>
-              <Link to="/categorias" className="h-12 px-7 rounded-sm hairline text-xs tracking-[0.25em] uppercase inline-flex items-center hover:text-gold transition">
-                Categorias
-              </Link>
-            </div>
-          </div>
-
-          <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl">
-            {[
-              ["15", "anos de tradição"],
-              ["+5.000", "rituais consagrados"],
-              ["+800", "peças selecionadas"],
-              ["4.9", "estrelas em avaliações"],
-            ].map(([n, l]) => (
-              <div key={l}>
-                <div className="font-serif text-3xl text-gold-gradient">{n}</div>
-                <div className="mt-1 text-[10px] tracking-[0.25em] uppercase text-muted-foreground">{l}</div>
+          <div className="mt-10 grid md:grid-cols-2 gap-8 items-center">
+            <div>
+              <div className="flex items-center gap-3 text-[11px] tracking-[0.3em] uppercase text-primary">
+                <Sparkles className="h-3 w-3" strokeWidth={1.5} /> Coleção 2026 · Edição Aurora
               </div>
-            ))}
+              <h1 className="mt-4 font-serif text-3xl md:text-5xl leading-tight text-foreground">
+                Espiritualidade, <span className="italic text-primary">energia</span> e beleza em cada detalhe.
+              </h1>
+              <p className="mt-5 max-w-xl text-muted-foreground">
+                Artigos místicos e religiosos selecionados há 15 anos para elevar ambientes, rituais e conexões espirituais.
+              </p>
+              <div className="mt-7 flex flex-wrap gap-3">
+                <Link to="/loja" className="group h-12 px-7 rounded-[10px] bg-primary text-primary-foreground text-xs tracking-[0.25em] uppercase inline-flex items-center gap-3 hover:bg-blue-deep transition-colors">
+                  Explorar Produtos
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" strokeWidth={1.5} />
+                </Link>
+                <Link to="/categorias" className="h-12 px-7 rounded-[10px] border border-primary text-primary text-xs tracking-[0.25em] uppercase inline-flex items-center hover:bg-primary hover:text-primary-foreground transition">
+                  Categorias
+                </Link>
+              </div>
+            </div>
+            <div className="grid grid-cols-2 gap-6">
+              {[
+                ["15", "anos de tradição"],
+                ["+5.000", "rituais consagrados"],
+                ["+800", "peças selecionadas"],
+                ["4.9", "estrelas em avaliações"],
+              ].map(([n, l]) => (
+                <div key={l} className="p-5 rounded-[10px] bg-background border border-border">
+                  <div className="font-serif text-3xl text-primary">{n}</div>
+                  <div className="mt-1 text-[10px] tracking-[0.25em] uppercase text-muted-foreground">{l}</div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -174,7 +171,7 @@ function Home() {
             <h2 className="mt-6 font-serif text-4xl md:text-6xl leading-[1.05]">
               Produtos escolhidos para transformar <span className="italic text-gold-gradient">energia, ambientes</span> e experiências.
             </h2>
-            <Link to="/loja" className="mt-10 inline-flex h-12 px-7 rounded-sm bg-foreground text-background text-xs tracking-[0.25em] uppercase items-center gap-3 hover:bg-gold transition">
+            <Link to="/loja" className="mt-10 inline-flex h-12 px-7 rounded-[10px] bg-foreground text-background text-xs tracking-[0.25em] uppercase items-center gap-3 hover:bg-gold transition">
               Entrar na loja <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
             </Link>
           </div>
@@ -237,9 +234,9 @@ function Home() {
                 type="email"
                 required
                 placeholder="seu e-mail"
-                className="flex-1 h-12 px-5 rounded-sm bg-background hairline text-sm focus:outline-none focus:border-gold transition"
+                className="flex-1 h-12 px-5 rounded-[10px] bg-background hairline text-sm focus:outline-none focus:border-gold transition"
               />
-              <button className="h-12 px-7 rounded-sm bg-foreground text-background text-xs tracking-[0.25em] uppercase hover:bg-gold transition">
+              <button className="h-12 px-7 rounded-[10px] bg-foreground text-background text-xs tracking-[0.25em] uppercase hover:bg-gold transition">
                 Assinar
               </button>
             </form>
