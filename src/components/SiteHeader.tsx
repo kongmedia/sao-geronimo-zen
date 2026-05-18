@@ -51,22 +51,10 @@ export function SiteHeader() {
     return location.pathname.startsWith(path);
   };
 
-  const NavLink = ({ to, params, label }: { to: string; params?: Record<string, string>; label: string }) => {
-    const active = params ? location.pathname === `/categoria/${params.slug}` : isActive(to);
-    const props: Record<string, unknown> = { to };
-    if (params) props.params = params;
-    return (
-      <Link
-        {...(props as { to: string })}
-        onMouseEnter={() => setMegaOpen(false)}
-        className={`relative hover:text-primary transition whitespace-nowrap uppercase pb-1 ${
-          active ? "text-primary after:absolute after:left-0 after:right-0 after:-bottom-0.5 after:h-[2px] after:bg-gold" : ""
-        }`}
-      >
-        {label}
-      </Link>
-    );
-  };
+  const navItemClass = (active: boolean) =>
+    `relative hover:text-primary transition whitespace-nowrap uppercase pb-1 ${
+      active ? "text-primary after:absolute after:left-0 after:right-0 after:-bottom-0.5 after:h-[2px] after:bg-gold" : ""
+    }`;
 
   return (
     <>
