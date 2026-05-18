@@ -4,6 +4,7 @@ import { categories } from "@/lib/catalog";
 
 export type Filters = {
   categories: string[];
+  subcategories: string[];
   minPrice: number;
   maxPrice: number;
   premiumOnly: boolean;
@@ -12,6 +13,7 @@ export type Filters = {
 
 export const defaultFilters: Filters = {
   categories: [],
+  subcategories: [],
   minPrice: 0,
   maxPrice: 1000,
   premiumOnly: false,
@@ -22,10 +24,12 @@ export function FilterSidebar({
   filters,
   onChange,
   showCategories = true,
+  subcategories,
 }: {
   filters: Filters;
   onChange: (f: Filters) => void;
   showCategories?: boolean;
+  subcategories?: string[];
 }) {
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -61,6 +65,32 @@ export function FilterSidebar({
                 <span>{c.name}</span>
               </label>
             ))}
+          </div>
+        </Section>
+      )}
+
+      {subcategories && subcategories.length > 0 && (
+        <Section title="Subcategorias" defaultOpen>
+          <div className="space-y-2 max-h-72 overflow-y-auto pr-2">
+            {subcategories.map((s) => {
+              const active = filters.subcategories.includes(s);
+              return (
+                <label key={s} className="flex items-center gap-2.5 text-sm cursor-pointer hover:text-primary transition">
+                  <input
+                    type="checkbox"
+                    checked={active}
+                    onChange={() => {
+                      const next = active
+                        ? filters.subcategories.filter((x) => x !== s)
+                        : [...filters.subcategories, s];
+                      onChange({ ...filters, subcategories: next });
+                    }}
+                    className="h-4 w-4 rounded border-border accent-[var(--primary)]"
+                  />
+                  <span>{s}</span>
+                </label>
+              );
+            })}
           </div>
         </Section>
       )}
