@@ -36,6 +36,11 @@ function CategoryPage() {
     if (p.price < filters.minPrice || p.price > filters.maxPrice) return false;
     if (filters.premiumOnly && !p.premium) return false;
     if (p.rating < filters.minRating) return false;
+    if (filters.subcategories.length > 0) {
+      const haystack = `${p.name} ${p.description}`.toLowerCase();
+      const match = filters.subcategories.some((s) => haystack.includes(s.toLowerCase()));
+      if (!match) return false;
+    }
     return true;
   }), [all, filters]);
 
