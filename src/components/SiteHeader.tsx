@@ -77,12 +77,17 @@ export function SiteHeader() {
                   <span className="absolute -top-0.5 -right-0.5 text-[9px] bg-gold text-white rounded-full h-4 w-4 flex items-center justify-center">{favCount}</span>
                 )}
               </Link>
-              <Link to="/carrinho" aria-label="Sacola" className="h-9 w-9 flex items-center justify-center hover:text-gold transition relative">
+              <button
+                type="button"
+                onClick={openDrawer}
+                aria-label="Sacola"
+                className="h-9 w-9 flex items-center justify-center hover:text-primary transition relative"
+              >
                 <ShoppingBag className="h-4 w-4" strokeWidth={1.5} />
                 {count > 0 && (
-                  <span className="absolute -top-0.5 -right-0.5 text-[9px] bg-gold text-white rounded-full h-4 w-4 flex items-center justify-center">{count}</span>
+                  <span className="absolute -top-0.5 -right-0.5 text-[9px] bg-primary text-primary-foreground rounded-full h-4 w-4 flex items-center justify-center">{count}</span>
                 )}
-              </Link>
+              </button>
             </div>
           </div>
 
