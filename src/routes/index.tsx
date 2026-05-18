@@ -1,26 +1,279 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowRight, ImageIcon, Sparkles, Star } from "lucide-react";
+import { Particles } from "@/components/Particles";
+import { ProductTile } from "@/components/ProductTile";
+import { categories, featured, products } from "@/lib/catalog";
 
 export const Route = createFileRoute("/")({
-  component: Index,
+  head: () => ({
+    meta: [
+      { title: "São Gerônimo — Espiritualidade, energia e beleza em cada detalhe" },
+      { name: "description", content: "Curadoria editorial de artigos místicos, religiosos e decoração espiritual. 15 anos elevando ambientes, rituais e conexões." },
+    ],
+    links: [{ rel: "canonical", href: "/" }],
+  }),
+  component: Home,
 });
 
-// IMPORTANT: Replace this placeholder. For sites with multiple pages (About, Services, Contact, etc.),
-// create separate route files (about.tsx, services.tsx, contact.tsx) — don't put all pages in this file.
-function PlaceholderIndex() {
+function Home() {
+  const heroCategories = categories.slice(0, 6);
+  const grid = products.slice(0, 8);
+
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div className="overflow-hidden">
+      {/* HERO */}
+      <section className="relative min-h-[92vh] flex items-end pb-24 bg-hero grain">
+        <Particles />
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-1/3 left-1/2 -translate-x-1/2 h-[520px] w-[520px] rounded-full bg-amber-glow/10 blur-[120px] animate-glow-pulse" />
+          <div className="absolute -bottom-32 right-0 h-[400px] w-[400px] rounded-full bg-accent/40 blur-[120px]" />
+        </div>
+        <div className="absolute inset-x-0 top-32 flex justify-center pointer-events-none">
+          <div className="font-serif text-[18vw] leading-none tracking-tighter opacity-[0.04] select-none">
+            Gerônimo
+          </div>
+        </div>
+        <div className="relative max-w-[1400px] mx-auto px-6 lg:px-10 w-full">
+          <div className="max-w-3xl animate-fade-up">
+            <div className="flex items-center gap-3 text-[11px] tracking-[0.3em] uppercase text-gold">
+              <Sparkles className="h-3 w-3" strokeWidth={1.5} /> Coleção 2026 · Edição Aurora
+            </div>
+            <h1 className="mt-6 font-serif text-5xl md:text-7xl lg:text-[88px] leading-[0.95]">
+              Espiritualidade, <span className="italic text-gold-gradient">energia</span><br />
+              e beleza em cada detalhe.
+            </h1>
+            <p className="mt-8 max-w-xl text-base md:text-lg text-muted-foreground leading-relaxed">
+              Artigos místicos e religiosos selecionados para elevar ambientes, rituais e conexões espirituais. Há quinze anos.
+            </p>
+            <div className="mt-10 flex flex-wrap gap-4">
+              <Link to="/loja" className="group h-12 px-7 rounded-sm bg-foreground text-background text-xs tracking-[0.25em] uppercase inline-flex items-center gap-3 hover:bg-gold transition-colors">
+                Explorar Produtos
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" strokeWidth={1.5} />
+              </Link>
+              <Link to="/categorias" className="h-12 px-7 rounded-sm hairline text-xs tracking-[0.25em] uppercase inline-flex items-center hover:text-gold transition">
+                Categorias
+              </Link>
+            </div>
+          </div>
+
+          <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl">
+            {[
+              ["15", "anos de tradição"],
+              ["+5.000", "rituais consagrados"],
+              ["+800", "peças selecionadas"],
+              ["4.9", "estrelas em avaliações"],
+            ].map(([n, l]) => (
+              <div key={l}>
+                <div className="font-serif text-3xl text-gold-gradient">{n}</div>
+                <div className="mt-1 text-[10px] tracking-[0.25em] uppercase text-muted-foreground">{l}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CATEGORIAS EM DESTAQUE */}
+      <section className="relative max-w-[1400px] mx-auto px-6 lg:px-10 py-28">
+        <div className="flex items-end justify-between mb-12">
+          <div>
+            <div className="text-[10px] tracking-[0.3em] uppercase text-gold mb-3">Universos</div>
+            <h2 className="font-serif text-4xl md:text-5xl max-w-xl">Categorias em destaque</h2>
+          </div>
+          <Link to="/categorias" className="hidden md:inline-flex items-center gap-2 text-xs tracking-[0.25em] uppercase link-underline">
+            Ver todas <ArrowRight className="h-3 w-3" strokeWidth={1.5} />
+          </Link>
+        </div>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+          {heroCategories.map((c, i) => (
+            <Link
+              key={c.slug}
+              to="/categoria/$slug"
+              params={{ slug: c.slug }}
+              className="group relative overflow-hidden rounded-md aspect-[4/5] placeholder-tile hairline animate-fade-up"
+              style={{ animationDelay: `${i * 80}ms` }}
+            >
+              <div className="absolute inset-0 flex items-center justify-center text-muted-foreground/40">
+                <ImageIcon className="h-12 w-12" strokeWidth={1} />
+              </div>
+              <div className="absolute inset-0 bg-veil" />
+              <div className="absolute inset-x-0 bottom-0 p-7">
+                <div className="text-[10px] tracking-[0.3em] uppercase text-gold mb-3 opacity-90">São Gerônimo</div>
+                <h3 className="font-serif text-3xl">{c.name}</h3>
+                <p className="mt-2 text-sm text-muted-foreground max-w-[260px]">{c.blurb}</p>
+                <div className="mt-5 inline-flex items-center gap-2 text-[11px] tracking-[0.25em] uppercase opacity-80 group-hover:text-gold transition">
+                  Descobrir <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-1" strokeWidth={1.5} />
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* PRODUTOS EM DESTAQUE */}
+      <section className="relative max-w-[1400px] mx-auto px-6 lg:px-10 py-20">
+        <div className="flex items-end justify-between mb-12">
+          <div>
+            <div className="text-[10px] tracking-[0.3em] uppercase text-gold mb-3">Curadoria</div>
+            <h2 className="font-serif text-4xl md:text-5xl">Selecionados pelo olhar editorial</h2>
+          </div>
+          <Link to="/loja" className="hidden md:inline-flex items-center gap-2 text-xs tracking-[0.25em] uppercase link-underline">
+            Ver tudo <ArrowRight className="h-3 w-3" strokeWidth={1.5} />
+          </Link>
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
+          {grid.map((p, i) => (
+            <ProductTile key={p.id} product={p} index={i} />
+          ))}
+        </div>
+      </section>
+
+      {/* EXPERIÊNCIA */}
+      <section className="relative py-32 bg-gradient-to-b from-background via-accent/10 to-background grain">
+        <div className="max-w-[1400px] mx-auto px-6 lg:px-10 grid lg:grid-cols-2 gap-16 items-center">
+          <div className="relative aspect-[4/5] rounded-md placeholder-tile hairline overflow-hidden">
+            <div className="absolute inset-0 flex items-center justify-center text-muted-foreground/40">
+              <ImageIcon className="h-16 w-16" strokeWidth={0.8} />
+            </div>
+            <div className="absolute inset-0 bg-veil" />
+            <div className="absolute left-6 bottom-6 font-serif text-2xl">Loja física · Estúdio espiritual</div>
+          </div>
+          <div>
+            <div className="text-[10px] tracking-[0.3em] uppercase text-gold mb-3">Tradição</div>
+            <h2 className="font-serif text-4xl md:text-5xl leading-tight">
+              Quinze anos consagrando<br />lares e altares.
+            </h2>
+            <p className="mt-8 text-muted-foreground leading-relaxed max-w-lg">
+              A São Gerônimo nasceu de um propósito raro: tratar o sagrado com a mesma reverência estética que o cotidiano merece. Cada peça é estudada, abençoada e disposta com intenção — para que entre em sua casa como entra a luz da manhã.
+            </p>
+            <div className="mt-10 grid grid-cols-2 gap-5">
+              {[
+                "Curadoria autoral",
+                "Embalagem ritual",
+                "Atendimento humano",
+                "Entrega cuidadosa",
+              ].map((t) => (
+                <div key={t} className="flex items-start gap-3 text-sm">
+                  <span className="mt-1 h-1.5 w-1.5 rounded-full bg-gold" />
+                  {t}
+                </div>
+              ))}
+            </div>
+            <Link to="/sobre" className="mt-10 inline-flex items-center gap-3 text-xs tracking-[0.25em] uppercase link-underline">
+              Nossa história <ArrowRight className="h-3 w-3" strokeWidth={1.5} />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* BANNER LUXUOSO */}
+      <section className="max-w-[1400px] mx-auto px-6 lg:px-10 py-24">
+        <div className="relative overflow-hidden rounded-md p-12 md:p-20 hairline bg-gradient-to-br from-accent/40 via-background to-background grain">
+          <div className="absolute -top-20 -right-20 h-[400px] w-[400px] rounded-full bg-gold/10 blur-[120px]" />
+          <div className="relative max-w-2xl">
+            <Sparkles className="h-6 w-6 text-gold" strokeWidth={1.2} />
+            <h2 className="mt-6 font-serif text-4xl md:text-6xl leading-[1.05]">
+              Produtos escolhidos para transformar <span className="italic text-gold-gradient">energia, ambientes</span> e experiências.
+            </h2>
+            <Link to="/loja" className="mt-10 inline-flex h-12 px-7 rounded-sm bg-foreground text-background text-xs tracking-[0.25em] uppercase items-center gap-3 hover:bg-gold transition">
+              Entrar na loja <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* FEATURED PREMIUM */}
+      <section className="max-w-[1400px] mx-auto px-6 lg:px-10 py-20">
+        <div className="flex items-end justify-between mb-12">
+          <h2 className="font-serif text-4xl md:text-5xl">Edição Premium</h2>
+          <Link to="/loja" className="hidden md:inline-flex items-center gap-2 text-xs tracking-[0.25em] uppercase link-underline">
+            Coleção completa <ArrowRight className="h-3 w-3" strokeWidth={1.5} />
+          </Link>
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
+          {featured.slice(0, 8).map((p, i) => (
+            <ProductTile key={p.id} product={p} index={i} />
+          ))}
+        </div>
+      </section>
+
+      {/* DEPOIMENTOS */}
+      <section className="max-w-[1400px] mx-auto px-6 lg:px-10 py-28">
+        <div className="text-center max-w-2xl mx-auto">
+          <div className="text-[10px] tracking-[0.3em] uppercase text-gold mb-3">Vozes</div>
+          <h2 className="font-serif text-4xl md:text-5xl">Quem entra, fica.</h2>
+        </div>
+        <div className="mt-16 grid md:grid-cols-3 gap-6">
+          {[
+            ["Mariana A.", "São Paulo", "Recebi minha vela e o aroma tomou a casa em silêncio. Embalagem como joia."],
+            ["Pedro V.", "Curitiba", "É a loja espiritual mais bonita que já entrei. Atendimento atencioso, real."],
+            ["Lúcia M.", "Salvador", "Os cristais chegaram envoltos em linho. Senti o cuidado em cada detalhe."],
+          ].map(([name, city, quote], i) => (
+            <div key={i} className="glass rounded-md p-8 animate-fade-up" style={{ animationDelay: `${i * 100}ms` }}>
+              <div className="flex gap-0.5 mb-5">
+                {Array.from({ length: 5 }).map((_, k) => (
+                  <Star key={k} className="h-3.5 w-3.5 fill-gold text-gold" />
+                ))}
+              </div>
+              <p className="font-serif text-xl leading-snug">"{quote}"</p>
+              <div className="mt-6 text-[11px] tracking-[0.25em] uppercase text-muted-foreground">
+                {name} · {city}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* NEWSLETTER */}
+      <section className="max-w-[1400px] mx-auto px-6 lg:px-10 py-24">
+        <div className="relative overflow-hidden rounded-md hairline bg-card/40 p-12 md:p-16 text-center grain">
+          <div className="absolute -top-40 left-1/2 -translate-x-1/2 h-[400px] w-[700px] rounded-full bg-gold/10 blur-[120px]" />
+          <div className="relative">
+            <div className="text-[10px] tracking-[0.3em] uppercase text-gold">Diário São Gerônimo</div>
+            <h2 className="mt-4 font-serif text-4xl md:text-5xl max-w-2xl mx-auto">
+              Receba rituais, lançamentos e <span className="italic text-gold-gradient">leituras de lua</span>.
+            </h2>
+            <form className="mt-10 flex flex-col sm:flex-row gap-3 max-w-md mx-auto" onSubmit={(e) => e.preventDefault()}>
+              <input
+                type="email"
+                required
+                placeholder="seu e-mail"
+                className="flex-1 h-12 px-5 rounded-sm bg-background hairline text-sm focus:outline-none focus:border-gold transition"
+              />
+              <button className="h-12 px-7 rounded-sm bg-foreground text-background text-xs tracking-[0.25em] uppercase hover:bg-gold transition">
+                Assinar
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      {/* BLOG TEASER */}
+      <section className="max-w-[1400px] mx-auto px-6 lg:px-10 py-20">
+        <div className="flex items-end justify-between mb-12">
+          <h2 className="font-serif text-4xl md:text-5xl">Diário espiritual</h2>
+          <Link to="/blog" className="hidden md:inline-flex items-center gap-2 text-xs tracking-[0.25em] uppercase link-underline">
+            Todas as leituras <ArrowRight className="h-3 w-3" strokeWidth={1.5} />
+          </Link>
+        </div>
+        <div className="grid md:grid-cols-3 gap-8">
+          {[
+            ["Ritual do incenso", "Como preparar a defumação semanal para limpar a casa em silêncio."],
+            ["Cristais em cabeceira", "Quartzo rosa, ametista e citrino — três pedras para o sono profundo."],
+            ["Altar minimalista", "Compor um altar pequeno, com presença grande, em três passos."],
+          ].map(([t, e], i) => (
+            <article key={i} className="group">
+              <div className="placeholder-tile aspect-[4/3] rounded-md relative overflow-hidden hairline">
+                <div className="absolute inset-0 flex items-center justify-center text-muted-foreground/40">
+                  <ImageIcon className="h-10 w-10" strokeWidth={1} />
+                </div>
+              </div>
+              <div className="text-[10px] tracking-[0.3em] uppercase text-gold mt-6">Leitura · 4 min</div>
+              <h3 className="font-serif text-2xl mt-2 group-hover:text-gold transition">{t}</h3>
+              <p className="text-sm text-muted-foreground mt-2 leading-relaxed">{e}</p>
+            </article>
+          ))}
+        </div>
+      </section>
     </div>
   );
-}
-
-function Index() {
-  return <PlaceholderIndex />;
 }

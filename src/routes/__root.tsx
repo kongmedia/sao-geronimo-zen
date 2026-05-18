@@ -9,24 +9,26 @@ import {
 } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
+import { CartProvider } from "@/lib/cart";
+import { SiteHeader } from "@/components/SiteHeader";
+import { SiteFooter } from "@/components/SiteFooter";
+import { WhatsAppFab } from "@/components/WhatsAppFab";
 
 function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
+        <div className="font-serif text-7xl text-gold-gradient">404</div>
+        <h2 className="mt-6 font-serif text-2xl">Caminho não revelado</h2>
+        <p className="mt-3 text-sm text-muted-foreground">
+          A página que você busca seguiu outro plano.
         </p>
-        <div className="mt-6">
-          <Link
-            to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-          >
-            Go home
-          </Link>
-        </div>
+        <Link
+          to="/"
+          className="mt-8 inline-flex h-11 items-center justify-center rounded-sm bg-foreground text-background px-6 text-xs tracking-[0.25em] uppercase hover:bg-gold transition"
+        >
+          Retornar ao início
+        </Link>
       </div>
     </div>
   );
@@ -35,32 +37,17 @@ function NotFoundComponent() {
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
   const router = useRouter();
-
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
-        <h1 className="text-xl font-semibold tracking-tight text-foreground">
-          This page didn't load
-        </h1>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Something went wrong on our end. You can try refreshing or head back home.
-        </p>
-        <div className="mt-6 flex flex-wrap justify-center gap-2">
+        <h1 className="font-serif text-2xl">Algo se interrompeu</h1>
+        <p className="mt-2 text-sm text-muted-foreground">Tente novamente em instantes.</p>
+        <div className="mt-6 flex gap-2 justify-center">
           <button
-            onClick={() => {
-              router.invalidate();
-              reset();
-            }}
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-          >
-            Try again
-          </button>
-          <a
-            href="/"
-            className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
-          >
-            Go home
-          </a>
+            onClick={() => { router.invalidate(); reset(); }}
+            className="h-10 px-5 rounded-sm bg-foreground text-background text-xs tracking-[0.2em] uppercase"
+          >Tentar novamente</button>
+          <a href="/" className="h-10 px-5 rounded-sm hairline text-xs tracking-[0.2em] uppercase inline-flex items-center">Início</a>
         </div>
       </div>
     </div>
@@ -72,21 +59,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "São Gerônimo — Artigos místicos, religiosos e decoração espiritual" },
+      { name: "description", content: "Há 15 anos selecionando artigos místicos, religiosos e decoração espiritual com olhar editorial. Cristais, incensos, velas, imagens, baralhos e mais." },
+      { name: "author", content: "São Gerônimo" },
+      { property: "og:title", content: "São Gerônimo — Espiritualidade, energia e beleza em cada detalhe" },
+      { property: "og:description", content: "Curadoria espiritual premium. Cristais, velas, incensos, imagens, baralhos e decoração." },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
-    ],
+    links: [{ rel: "stylesheet", href: appCss }],
   }),
   shellComponent: RootShell,
   component: RootComponent,
@@ -96,7 +77,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="pt-BR" className="dark">
       <head>
         <HeadContent />
       </head>
@@ -110,10 +91,18 @@ function RootShell({ children }: { children: React.ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
-
   return (
     <QueryClientProvider client={queryClient}>
-      <Outlet />
+      <CartProvider>
+        <div className="min-h-screen flex flex-col bg-background">
+          <SiteHeader />
+          <main className="flex-1 pt-[88px]">
+            <Outlet />
+          </main>
+          <SiteFooter />
+          <WhatsAppFab />
+        </div>
+      </CartProvider>
     </QueryClientProvider>
   );
 }
