@@ -1,8 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ImageIcon, Sparkles, Star } from "lucide-react";
-import { Particles } from "@/components/Particles";
 import { ProductTile } from "@/components/ProductTile";
 import { categories, featured, products } from "@/lib/catalog";
+import heroBanner from "@/assets/hero-banner.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
