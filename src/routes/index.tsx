@@ -222,8 +222,8 @@ function Home() {
 
       {/* NEWSLETTER */}
       <section className="max-w-[1400px] mx-auto px-6 lg:px-10 py-24">
-        <div className="relative overflow-hidden rounded-md hairline bg-card/40 p-12 md:p-16 text-center grain">
-          <div className="absolute -top-40 left-1/2 -translate-x-1/2 h-[400px] w-[700px] rounded-full bg-gold/10 blur-[120px]" />
+        <div className="relative overflow-hidden rounded-md bg-primary text-primary-foreground p-12 md:p-16 text-center">
+          <div className="absolute -top-40 left-1/2 -translate-x-1/2 h-[400px] w-[700px] rounded-full bg-gold/20 blur-[120px]" />
           <div className="relative">
             <div className="text-[10px] tracking-[0.3em] uppercase text-gold">Diário São Gerônimo</div>
             <h2 className="mt-4 font-serif text-4xl md:text-5xl max-w-2xl mx-auto">
@@ -234,9 +234,9 @@ function Home() {
                 type="email"
                 required
                 placeholder="seu e-mail"
-                className="flex-1 h-12 px-5 rounded-[10px] bg-background hairline text-sm focus:outline-none focus:border-gold transition"
+                className="flex-1 h-12 px-5 rounded-[10px] bg-background text-foreground border border-primary-foreground/20 text-sm focus:outline-none focus:border-gold transition"
               />
-              <button className="h-12 px-7 rounded-[10px] bg-foreground text-background text-xs tracking-[0.25em] uppercase hover:bg-gold transition">
+              <button className="h-12 px-7 rounded-[10px] bg-gold text-foreground text-xs tracking-[0.25em] uppercase hover:bg-gold-soft transition">
                 Assinar
               </button>
             </form>
