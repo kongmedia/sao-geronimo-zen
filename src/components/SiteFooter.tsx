@@ -20,7 +20,7 @@ export function SiteFooter() {
           </div>
         </div>
         {[
-          { title: "Navegar", links: [["Loja","/loja"],["Categorias","/categorias"],["Sobre","/sobre"],["Diário","/blog"],["Contato","/contato"]] },
+          { title: "Navegar", links: [["Início","/"],["Loja","/loja"],["Categorias","/categorias"],["Sobre","/sobre"],["Blog","/blog"],["Contato","/contato"]] },
           { title: "Conta", links: [["Minha Conta","/conta"],["Favoritos","/favoritos"],["Carrinho","/carrinho"],["Checkout","/checkout"]] },
           { title: "Atendimento", links: [["WhatsApp","/contato"],["Trocas e devoluções","/contato"],["Política de privacidade","/contato"],["Termos","/contato"]] },
         ].map((col) => (
