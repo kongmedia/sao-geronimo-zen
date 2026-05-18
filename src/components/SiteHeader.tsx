@@ -44,33 +44,34 @@ export function SiteHeader() {
               São <span className="text-gold-gradient">Gerônimo</span>
             </Link>
 
-            {/* Desktop nav: distributed categories + Todas as categorias */}
-            <nav
-              className="hidden lg:flex items-center gap-6 xl:gap-8 text-[11px] tracking-[0.22em] uppercase flex-1 justify-center"
-              onMouseLeave={() => setMegaOpen(false)}
-            >
-              {categories.slice(0, 5).map((c) => (
-                <Link
-                  key={c.slug}
-                  to="/categoria/$slug"
-                  params={{ slug: c.slug }}
-                  onMouseEnter={() => setMegaOpen(false)}
-                  className="link-underline hover:text-primary transition whitespace-nowrap"
-                >
-                  {c.name}
-                </Link>
-              ))}
+            {/* Desktop nav: single-word categories + Todas as categorias */}
+            <nav className="hidden lg:flex items-center gap-6 xl:gap-8 text-[11px] tracking-[0.22em] uppercase flex-1 justify-center">
+              {categories
+                .filter((c) => c.name.trim().split(/\s+/).length === 1)
+                .slice(0, 5)
+                .map((c) => (
+                  <Link
+                    key={c.slug}
+                    to="/categoria/$slug"
+                    params={{ slug: c.slug }}
+                    onMouseEnter={() => setMegaOpen(false)}
+                    className="link-underline hover:text-primary transition whitespace-nowrap uppercase"
+                  >
+                    {c.name.toUpperCase()}
+                  </Link>
+                ))}
               <button
                 onMouseEnter={() => setMegaOpen(true)}
                 onFocus={() => setMegaOpen(true)}
-                className="inline-flex items-center gap-1.5 hover:text-primary transition whitespace-nowrap"
+                className="inline-flex items-center gap-1.5 hover:text-primary transition whitespace-nowrap uppercase"
                 aria-expanded={megaOpen}
                 aria-haspopup="true"
               >
-                Todas as categorias
+                TODAS AS CATEGORIAS
                 <ChevronDown className={`h-3 w-3 transition-transform ${megaOpen ? "rotate-180" : ""}`} strokeWidth={1.8} />
               </button>
             </nav>
+
 
             <div className="flex items-center gap-1 lg:gap-1.5 shrink-0">
               <Link to="/loja" aria-label="Buscar" className="h-9 w-9 flex items-center justify-center hover:text-gold transition">
