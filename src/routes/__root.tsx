@@ -111,6 +111,7 @@ function RootComponent() {
           </main>
           <SiteFooter />
           <WhatsAppFab />
+          <CartDrawer />
           <Preloader />
         </div>
       </CartProvider>
