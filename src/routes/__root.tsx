@@ -13,6 +13,7 @@ import { CartProvider } from "@/lib/cart";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { WhatsAppFab } from "@/components/WhatsAppFab";
+import { CartDrawer } from "@/components/CartDrawer";
 
 function NotFoundComponent() {
   return (
@@ -105,6 +106,7 @@ function RootComponent() {
           </main>
           <SiteFooter />
           <WhatsAppFab />
+          <CartDrawer />
         </div>
       </CartProvider>
     </QueryClientProvider>

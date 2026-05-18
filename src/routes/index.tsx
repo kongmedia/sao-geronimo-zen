@@ -180,7 +180,7 @@ function Home() {
             <h2 className="mt-6 font-serif text-4xl md:text-6xl leading-[1.05]">
               Produtos escolhidos para transformar <span className="italic text-gold-gradient">energia, ambientes</span> e experiências.
             </h2>
-            <Link to="/loja" className="mt-10 inline-flex h-12 px-7 rounded-[10px] bg-gold text-foreground text-xs tracking-[0.25em] uppercase items-center gap-3 hover:bg-gold-soft transition">
+            <Link to="/loja" className="mt-10 inline-flex h-12 px-7 rounded-[10px] bg-background text-primary text-xs tracking-[0.25em] uppercase items-center gap-3 hover:bg-gold hover:text-foreground transition">
               Entrar na loja <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
             </Link>
           </div>
