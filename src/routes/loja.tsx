@@ -16,7 +16,8 @@ export const Route = createFileRoute("/loja")({
 });
 
 function Shop() {
-  const [filters, setFilters] = useState<Filters>(defaultFilters);
+  const [filters, _setFilters] = useState<Filters>(defaultFilters);
+  const setFilters = (f: Filters) => { console.log("[loja] setFilters", f); _setFilters(f); };
 
   const list = useMemo(() => products.filter((p) => {
     if (filters.categories.length > 0 && !filters.categories.includes(p.category)) return false;
