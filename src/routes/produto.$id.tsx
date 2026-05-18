@@ -84,7 +84,22 @@ function ProductPage() {
             <span className="text-xs text-muted-foreground">ou 3x sem juros</span>
           </div>
 
-          <p className="mt-8 text-muted-foreground leading-relaxed">{product.description}</p>
+          <p className="mt-8 text-foreground/80 leading-relaxed text-[15px]">
+            {product.description} Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur a velit at lectus posuere tincidunt. Cada peça segue um ritual de seleção autoral.
+          </p>
+
+          <div className="mt-6 border-l-2 border-gold/40 pl-5 text-sm text-muted-foreground leading-relaxed space-y-3">
+            <p>
+              <span className="text-gold tracking-[0.2em] uppercase text-[10px] block mb-2">Descrição completa</span>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vehicula, magna sit amet faucibus volutpat, est nisi varius nibh, nec interdum sapien ipsum a justo. Nullam consectetur, lorem in cursus tincidunt, lectus turpis dignissim purus, vitae fermentum nibh urna nec felis.
+            </p>
+            <p>
+              Suspendisse potenti. Curabitur in tortor non dolor pellentesque tincidunt. Aliquam erat volutpat. Vivamus euismod metus a urna pulvinar, nec gravida orci viverra. Mauris vel arcu sit amet justo bibendum aliquet eu in nibh. Phasellus ultrices, mi vel hendrerit egestas, lorem nibh dignissim libero, vitae aliquet justo justo non nisl.
+            </p>
+            <p>
+              Materiais: composição artesanal selecionada · Origem: ateliês parceiros São Gerônimo · Cuidados: limpar com pano seco, manter longe de umidade · Energia: pode ser consagrada conforme sua tradição. Cada exemplar carrega pequenas variações que celebram a feitura à mão.
+            </p>
+          </div>
 
           <div className="mt-10 flex items-center gap-4">
             <div className="flex items-center hairline rounded-sm">
