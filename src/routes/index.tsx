@@ -3,6 +3,8 @@ import { ArrowRight, ImageIcon, Sparkles, Star } from "lucide-react";
 import { ProductTile } from "@/components/ProductTile";
 import { categories, featured, products } from "@/lib/catalog";
 import heroBanner from "@/assets/hero-banner.png";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
