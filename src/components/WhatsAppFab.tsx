@@ -1,5 +1,3 @@
-import { MessageCircle } from "lucide-react";
-
 export function WhatsAppFab() {
   return (
     <a
@@ -7,9 +5,17 @@ export function WhatsAppFab() {
       target="_blank"
       rel="noreferrer"
       aria-label="Falar no WhatsApp"
-      className="fixed bottom-6 right-6 z-40 h-14 w-14 rounded-full bg-gold-gradient text-background flex items-center justify-center shadow-glow hover:scale-110 transition animate-glow-pulse"
+      className="fixed bottom-6 right-6 z-40 h-14 w-14 rounded-full bg-whatsapp text-white flex items-center justify-center shadow-elevated hover:scale-110 transition"
     >
-      <MessageCircle className="h-5 w-5" strokeWidth={1.6} />
+      {/* Official WhatsApp glyph */}
+      <svg
+        viewBox="0 0 32 32"
+        className="h-7 w-7"
+        fill="currentColor"
+        aria-hidden="true"
+      >
+        <path d="M19.11 17.205c-.372 0-1.088 1.39-1.518 1.39a.63.63 0 0 1-.315-.1c-.802-.402-1.504-.817-2.163-1.4-.545-.489-1.146-1.388-1.46-2.018a.426.426 0 0 1-.073-.215c0-.33.99-.945.99-1.49 0-.143-.73-2.09-.832-2.335-.143-.372-.214-.487-.6-.487-.187 0-.36-.043-.53-.043-.302 0-.53.115-.746.315-.688.645-1.032 1.318-1.06 2.264v.114c-.015.99.472 1.977 1.017 2.78 1.23 1.82 2.506 3.41 4.554 4.34.616.287 2.035.888 2.722.888.817 0 2.15-.515 2.494-1.317.114-.26.187-.547.187-.83 0-.602-.93-.96-1.404-1.247-.302-.158-.804-.43-1.06-.43Zm-2.91 7.622c-1.732 0-3.45-.515-4.897-1.46l-3.41 1.103 1.117-3.336a8.792 8.792 0 0 1-1.665-5.183c0-4.886 4.013-8.857 8.899-8.857 4.885 0 8.855 3.971 8.855 8.857 0 4.885-3.97 8.876-8.9 8.876ZM16.224 4.34c-6.063 0-11.005 4.913-11.005 10.977 0 1.937.513 3.85 1.487 5.514L4.6 27.43l6.751-2.16a10.998 10.998 0 0 0 4.87 1.146h.005c6.062 0 11.07-4.913 11.07-10.977 0-2.945-1.165-5.708-3.241-7.785a10.927 10.927 0 0 0-7.83-3.24Z" />
+      </svg>
     </a>
   );
 }
