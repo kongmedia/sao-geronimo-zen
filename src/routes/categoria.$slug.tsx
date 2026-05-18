@@ -32,17 +32,17 @@ function CategoryPage() {
   const all = productsByCategory(cat.slug);
   const [filters, setFilters] = useState<Filters>(defaultFilters);
 
-  const list = useMemo(() => all.filter((p) => {
+  const list = all.filter((p) => {
     if (p.price < filters.minPrice || p.price > filters.maxPrice) return false;
     if (filters.premiumOnly && !p.premium) return false;
     if (p.rating < filters.minRating) return false;
     if (filters.subcategories.length > 0) {
-      const haystack = `${p.name} ${p.description}`.toLowerCase();
-      const match = filters.subcategories.some((s) => haystack.includes(s.toLowerCase()));
+      const haystack = `${p.name} ${p.description} ${p.subcategory ?? ""}`.toLowerCase();
+      const match = filters.subcategories.some((s) => p.subcategory === s || haystack.includes(s.toLowerCase()));
       if (!match) return false;
     }
     return true;
-  }), [all, filters]);
+  });
 
   return (
     <div>
@@ -55,9 +55,26 @@ function CategoryPage() {
         {cat.subcategories && (
           <div className="mt-6 flex flex-wrap gap-2">
             {cat.subcategories.map((s: string) => (
-              <span key={s} className="px-3 py-1.5 rounded-[10px] border border-border text-[11px] tracking-[0.18em] uppercase text-muted-foreground">
+              <button
+                key={s}
+                type="button"
+                onClick={() => {
+                  const active = filters.subcategories.includes(s);
+                  setFilters({
+                    ...filters,
+                    subcategories: active
+                      ? filters.subcategories.filter((x) => x !== s)
+                      : [...filters.subcategories, s],
+                  });
+                }}
+                className={`px-3 py-1.5 rounded-[10px] border text-[11px] tracking-[0.18em] uppercase transition ${
+                  filters.subcategories.includes(s)
+                    ? "border-primary bg-primary text-primary-foreground"
+                    : "border-border text-muted-foreground hover:border-primary hover:text-primary"
+                }`}
+              >
                 {s}
-              </span>
+              </button>
             ))}
           </div>
         )}
