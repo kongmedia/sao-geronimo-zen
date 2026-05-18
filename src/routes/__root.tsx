@@ -13,7 +13,6 @@ import { CartProvider } from "@/lib/cart";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { WhatsAppFab } from "@/components/WhatsAppFab";
-import { CartDrawer } from "@/components/CartDrawer";
 
 function NotFoundComponent() {
   return (
@@ -26,7 +25,7 @@ function NotFoundComponent() {
         </p>
         <Link
           to="/"
-          className="mt-8 inline-flex h-11 items-center justify-center rounded-[10px] bg-foreground text-background px-6 text-xs tracking-[0.25em] uppercase hover:bg-gold transition"
+          className="mt-8 inline-flex h-11 items-center justify-center rounded-sm bg-foreground text-background px-6 text-xs tracking-[0.25em] uppercase hover:bg-gold transition"
         >
           Retornar ao início
         </Link>
@@ -46,9 +45,9 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
         <div className="mt-6 flex gap-2 justify-center">
           <button
             onClick={() => { router.invalidate(); reset(); }}
-            className="h-10 px-5 rounded-[10px] bg-foreground text-background text-xs tracking-[0.2em] uppercase"
+            className="h-10 px-5 rounded-sm bg-foreground text-background text-xs tracking-[0.2em] uppercase"
           >Tentar novamente</button>
-          <a href="/" className="h-10 px-5 rounded-[10px] hairline text-xs tracking-[0.2em] uppercase inline-flex items-center">Início</a>
+          <a href="/" className="h-10 px-5 rounded-sm hairline text-xs tracking-[0.2em] uppercase inline-flex items-center">Início</a>
         </div>
       </div>
     </div>
@@ -63,10 +62,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "São Gerônimo — Artigos místicos, religiosos e decoração espiritual" },
       { name: "description", content: "Há 15 anos selecionando artigos místicos, religiosos e decoração espiritual com olhar editorial. Cristais, incensos, velas, imagens, baralhos e mais." },
       { name: "author", content: "São Gerônimo" },
-      { property: "og:title", content: "São Gerônimo — Espiritualidade, energia e beleza em cada detalhe" },
-      { property: "og:description", content: "Curadoria espiritual premium. Cristais, velas, incensos, imagens, baralhos e decoração." },
+      { property: "og:title", content: "São Gerônimo — Artigos místicos, religiosos e decoração espiritual" },
+      { property: "og:description", content: "Há 15 anos selecionando artigos místicos, religiosos e decoração espiritual com olhar editorial. Cristais, incensos, velas, imagens, baralhos e mais." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "São Gerônimo — Artigos místicos, religiosos e decoração espiritual" },
+      { name: "twitter:description", content: "Há 15 anos selecionando artigos místicos, religiosos e decoração espiritual com olhar editorial. Cristais, incensos, velas, imagens, baralhos e mais." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/49816796-2d3f-4dfd-b962-642141053574/id-preview-a73b0042--9b4724e2-4cdf-4bd3-9671-e30bfb932842.lovable.app-1779108825986.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/49816796-2d3f-4dfd-b962-642141053574/id-preview-a73b0042--9b4724e2-4cdf-4bd3-9671-e30bfb932842.lovable.app-1779108825986.png" },
     ],
     links: [{ rel: "stylesheet", href: appCss }],
   }),
@@ -102,7 +105,6 @@ function RootComponent() {
           </main>
           <SiteFooter />
           <WhatsAppFab />
-          <CartDrawer />
         </div>
       </CartProvider>
     </QueryClientProvider>
