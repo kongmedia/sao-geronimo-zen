@@ -164,10 +164,8 @@ export function SiteHeader() {
             <nav className="mt-12 flex flex-col gap-4 text-2xl font-serif">
               {[
                 ["/", "Início"],
-                ["/loja", "Loja"],
                 ["/categorias", "Categorias"],
-                ["/sobre", "Sobre"],
-                ["/blog", "Blog"],
+                ["/favoritos", "Favoritos"],
                 ["/contato", "Contato"],
               ].map(([to, label]) => (
                 <Link key={to} to={to} onClick={() => setOpen(false)} className="border-b border-border pb-3">
