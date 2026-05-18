@@ -193,6 +193,7 @@
     border: 1px solid oklch(0.18 0.012 80 / 0.06);
   }
   .glass-strong {
+    position: relative;
     background:
       linear-gradient(180deg, oklch(1 0 0 / 0.58), oklch(0.985 0.008 85 / 0.44)),
       oklch(0.985 0.008 85 / 0.46) !important;
