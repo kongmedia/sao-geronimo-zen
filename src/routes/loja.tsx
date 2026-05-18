@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { ProductTile } from "@/components/ProductTile";
 import { FilterSidebar, defaultFilters, type Filters } from "@/components/FilterSidebar";
 import { products } from "@/lib/catalog";
