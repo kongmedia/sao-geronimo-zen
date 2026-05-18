@@ -36,7 +36,9 @@ function ProductPage() {
   const fav = favorites.includes(product.id);
   const [qty, setQty] = useState(1);
   const [main, setMain] = useState(0);
-  const related = products.filter((p) => p.category === product.category && p.id !== product.id).slice(0, 4);
+  const sameCat = products.filter((p) => p.category === product.category && p.id !== product.id);
+  const fillers = products.filter((p) => p.id !== product.id && !sameCat.includes(p));
+  const related = [...sameCat, ...fillers].slice(0, 4);
 
   return (
     <div>
