@@ -4,6 +4,7 @@ import { categories } from "@/lib/catalog";
 
 export type Filters = {
   categories: string[];
+  subcategories: string[];
   minPrice: number;
   maxPrice: number;
   premiumOnly: boolean;
@@ -12,6 +13,7 @@ export type Filters = {
 
 export const defaultFilters: Filters = {
   categories: [],
+  subcategories: [],
   minPrice: 0,
   maxPrice: 1000,
   premiumOnly: false,
@@ -22,10 +24,12 @@ export function FilterSidebar({
   filters,
   onChange,
   showCategories = true,
+  subcategories,
 }: {
   filters: Filters;
   onChange: (f: Filters) => void;
   showCategories?: boolean;
+  subcategories?: string[];
 }) {
   const [mobileOpen, setMobileOpen] = useState(false);
 
