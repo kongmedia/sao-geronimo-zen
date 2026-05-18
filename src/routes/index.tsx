@@ -125,7 +125,7 @@ function Home() {
             Ver tudo <ArrowRight className="h-3 w-3" strokeWidth={1.5} />
           </Link>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-8">
           {grid.map((p, i) => (
             <ProductTile key={p.id} product={p} index={i} />
           ))}
@@ -196,7 +196,7 @@ function Home() {
             Coleção completa <ArrowRight className="h-3 w-3" strokeWidth={1.5} />
           </Link>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-8">
           {featured.slice(0, 8).map((p, i) => (
             <ProductTile key={p.id} product={p} index={i} />
           ))}

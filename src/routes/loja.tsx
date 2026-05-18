@@ -43,7 +43,7 @@ function Shop() {
           {list.length === 0 ? (
             <div className="py-32 text-center text-muted-foreground">Nenhuma peça encontrada com esses filtros.</div>
           ) : (
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-7">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-7">
               {list.map((p, i) => <ProductTile key={p.id} product={p} index={i} />)}
             </div>
           )}

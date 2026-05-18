@@ -208,7 +208,7 @@ function ProductPage() {
       {related.length > 0 && (
         <section className="max-w-[1400px] mx-auto px-6 lg:px-10 py-20 border-t border-border">
           <h2 className="font-serif text-3xl md:text-4xl mb-10">Combinam com esta peça</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-8">
             {related.map((p, i) => <ProductTile key={p.id} product={p} index={i} />)}
           </div>
         </section>
