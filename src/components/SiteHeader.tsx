@@ -97,6 +97,7 @@ export function SiteHeader() {
               <button
                 onMouseEnter={() => setMegaOpen(true)}
                 onFocus={() => setMegaOpen(true)}
+                onClick={() => setMegaOpen((v) => !v)}
                 className="inline-flex items-center gap-1.5 hover:text-primary transition whitespace-nowrap uppercase"
                 aria-expanded={megaOpen}
                 aria-haspopup="true"
