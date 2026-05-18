@@ -80,9 +80,19 @@ export function SiteHeader() {
             </Link>
 
             <nav className="hidden lg:flex items-center gap-5 xl:gap-7 text-[11px] tracking-[0.22em] uppercase flex-1 justify-center">
-              <NavLink to="/" label="Home" />
+              <Link to="/" onMouseEnter={() => setMegaOpen(false)} className={navItemClass(isActive("/"))}>
+                Home
+              </Link>
               {singleWordCats.map((c) => (
-                <NavLink key={c.slug} to="/categoria/$slug" params={{ slug: c.slug }} label={c.name.toUpperCase()} />
+                <Link
+                  key={c.slug}
+                  to="/categoria/$slug"
+                  params={{ slug: c.slug }}
+                  onMouseEnter={() => setMegaOpen(false)}
+                  className={navItemClass(location.pathname === `/categoria/${c.slug}`)}
+                >
+                  {c.name.toUpperCase()}
+                </Link>
               ))}
               <button
                 onMouseEnter={() => setMegaOpen(true)}
