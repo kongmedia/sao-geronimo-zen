@@ -39,7 +39,7 @@ function CategoryPage() {
         <p className="mt-6 max-w-xl text-muted-foreground">{cat.blurb}</p>
         {cat.subcategories && (
           <div className="mt-8 flex flex-wrap gap-2">
-            {cat.subcategories.map((s) => (
+            {cat.subcategories.map((s: string) => (
               <span key={s} className="px-3 py-1.5 rounded-full hairline text-[11px] tracking-[0.2em] uppercase text-muted-foreground">
                 {s}
               </span>
