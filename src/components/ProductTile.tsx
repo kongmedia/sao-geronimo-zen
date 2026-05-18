@@ -1,11 +1,20 @@
 import { Link } from "@tanstack/react-router";
-import { ImageIcon, Star } from "lucide-react";
+import { ImageIcon, ShoppingBag, Star } from "lucide-react";
 import { categories, formatBRL, type Product } from "@/lib/catalog";
+import { useCart } from "@/lib/cart";
 
 export function ProductTile({ product, index = 0 }: { product: Product; index?: number }) {
   const cat = categories.find((c) => c.slug === product.category);
+  const { add, openDrawer } = useCart();
   const installments = 10;
   const perMonth = product.price / installments;
+
+  const handleBuy = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    add(product.id, 1);
+    openDrawer();
+  };
 
   return (
     <div
@@ -46,6 +55,14 @@ export function ProductTile({ product, index = 0 }: { product: Product; index?: 
               ou em até <span className="font-medium text-foreground">{installments}x de {formatBRL(perMonth)}</span> sem juros
             </div>
           </div>
+          <button
+            type="button"
+            onClick={handleBuy}
+            className="mt-3 w-full h-10 rounded-[10px] bg-primary text-primary-foreground text-[11px] tracking-[0.22em] uppercase inline-flex items-center justify-center gap-2 hover:bg-blue-deep transition-colors"
+          >
+            <ShoppingBag className="h-3.5 w-3.5" strokeWidth={1.8} />
+            Comprar agora
+          </button>
         </div>
       </Link>
     </div>
