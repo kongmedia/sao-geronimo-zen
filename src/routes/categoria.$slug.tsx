@@ -59,8 +59,9 @@ function CategoryPage() {
       </section>
 
       <section className="max-w-[1400px] mx-auto px-6 lg:px-10 pb-24 flex gap-10">
-        <FilterSidebar filters={filters} onChange={setFilters} showCategories={false} />
+        <FilterSidebar filters={filters} onChange={setFilters} showCategories={false} subcategories={cat.subcategories} />
         <div className="flex-1 min-w-0">
+
           <div className="mb-6 text-xs text-muted-foreground">{list.length} peças</div>
           {list.length === 0 ? (
             <div className="py-32 text-center text-muted-foreground">
