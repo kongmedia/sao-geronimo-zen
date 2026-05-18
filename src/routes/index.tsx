@@ -172,19 +172,21 @@ function Home() {
 
       {/* BANNER LUXUOSO */}
       <section className="max-w-[1400px] mx-auto px-6 lg:px-10 py-24">
-        <div className="relative overflow-hidden rounded-md p-12 md:p-20 hairline bg-gradient-to-br from-accent/40 via-background to-background grain">
-          <div className="absolute -top-20 -right-20 h-[400px] w-[400px] rounded-full bg-gold/10 blur-[120px]" />
+        <div className="relative overflow-hidden rounded-md p-12 md:p-20 bg-primary text-primary-foreground">
+          <div className="absolute -top-20 -right-20 h-[400px] w-[400px] rounded-full bg-gold/20 blur-[120px]" />
+          <div className="absolute -bottom-32 -left-20 h-[360px] w-[360px] rounded-full bg-gold/10 blur-[120px]" />
           <div className="relative max-w-2xl">
             <Sparkles className="h-6 w-6 text-gold" strokeWidth={1.2} />
             <h2 className="mt-6 font-serif text-4xl md:text-6xl leading-[1.05]">
               Produtos escolhidos para transformar <span className="italic text-gold-gradient">energia, ambientes</span> e experiências.
             </h2>
-            <Link to="/loja" className="mt-10 inline-flex h-12 px-7 rounded-[10px] bg-foreground text-background text-xs tracking-[0.25em] uppercase items-center gap-3 hover:bg-gold transition">
+            <Link to="/loja" className="mt-10 inline-flex h-12 px-7 rounded-[10px] bg-gold text-foreground text-xs tracking-[0.25em] uppercase items-center gap-3 hover:bg-gold-soft transition">
               Entrar na loja <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
             </Link>
           </div>
         </div>
       </section>
+
 
       {/* FEATURED PREMIUM */}
       <section className="max-w-[1400px] mx-auto px-6 lg:px-10 py-20">
