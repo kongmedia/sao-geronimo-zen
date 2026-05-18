@@ -23,7 +23,7 @@ function CartPage() {
       {detailed.length === 0 ? (
         <div className="mt-20 text-center glass p-12 rounded-md">
           <p className="font-serif text-2xl">Sua sacola está em silêncio.</p>
-          <Link to="/loja" className="mt-6 inline-flex h-11 px-6 rounded-sm bg-foreground text-background text-xs tracking-[0.25em] uppercase items-center hover:bg-gold transition">
+          <Link to="/loja" className="mt-6 inline-flex h-11 px-6 rounded-[10px] bg-foreground text-background text-xs tracking-[0.25em] uppercase items-center hover:bg-gold transition">
             Descobrir peças
           </Link>
         </div>
@@ -32,7 +32,7 @@ function CartPage() {
           <div className="divide-y divide-border">
             {detailed.map(({ i, p }) => (
               <div key={i.id} className="py-6 flex gap-5">
-                <div className="placeholder-tile h-28 w-24 rounded-sm flex items-center justify-center text-muted-foreground/40">
+                <div className="placeholder-tile h-28 w-24 rounded-[10px] flex items-center justify-center text-muted-foreground/40">
                   <ImageIcon className="h-8 w-8" strokeWidth={1} />
                 </div>
                 <div className="flex-1 flex flex-col">
@@ -43,7 +43,7 @@ function CartPage() {
                     <span className="font-serif text-lg">{formatBRL(p!.price * i.qty)}</span>
                   </div>
                   <div className="mt-auto flex items-center justify-between">
-                    <div className="flex items-center hairline rounded-sm text-sm">
+                    <div className="flex items-center hairline rounded-[10px] text-sm">
                       <button onClick={() => setQty(i.id, i.qty - 1)} className="h-9 w-9">−</button>
                       <span className="w-8 text-center">{i.qty}</span>
                       <button onClick={() => setQty(i.id, i.qty + 1)} className="h-9 w-9">+</button>
@@ -62,7 +62,7 @@ function CartPage() {
             <Row label="Frete" value="Calculado no checkout" />
             <div className="border-t border-border my-5" />
             <Row label="Total" value={formatBRL(subtotal)} large />
-            <Link to="/checkout" className="mt-7 w-full inline-flex h-12 items-center justify-center rounded-sm bg-foreground text-background text-xs tracking-[0.25em] uppercase hover:bg-gold transition">
+            <Link to="/checkout" className="mt-7 w-full inline-flex h-12 items-center justify-center rounded-[10px] bg-foreground text-background text-xs tracking-[0.25em] uppercase hover:bg-gold transition">
               Finalizar compra
             </Link>
             <Link to="/loja" className="mt-3 w-full inline-flex h-12 items-center justify-center text-xs tracking-[0.25em] uppercase text-muted-foreground hover:text-foreground transition">

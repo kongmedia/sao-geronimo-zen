@@ -40,11 +40,11 @@ function Contact() {
       </div>
 
       <form onSubmit={(e) => e.preventDefault()} className="glass rounded-md p-8 space-y-5 h-fit">
-        <input placeholder="seu nome" className="w-full h-12 px-4 rounded-sm bg-background hairline text-sm focus:outline-none focus:border-gold transition" />
-        <input type="email" placeholder="e-mail" className="w-full h-12 px-4 rounded-sm bg-background hairline text-sm focus:outline-none focus:border-gold transition" />
-        <input placeholder="assunto" className="w-full h-12 px-4 rounded-sm bg-background hairline text-sm focus:outline-none focus:border-gold transition" />
-        <textarea placeholder="mensagem" rows={6} className="w-full px-4 py-3 rounded-sm bg-background hairline text-sm focus:outline-none focus:border-gold transition resize-none" />
-        <button className="w-full h-12 rounded-sm bg-foreground text-background text-xs tracking-[0.25em] uppercase hover:bg-gold transition">Enviar</button>
+        <input placeholder="seu nome" className="w-full h-12 px-4 rounded-[10px] bg-background hairline text-sm focus:outline-none focus:border-gold transition" />
+        <input type="email" placeholder="e-mail" className="w-full h-12 px-4 rounded-[10px] bg-background hairline text-sm focus:outline-none focus:border-gold transition" />
+        <input placeholder="assunto" className="w-full h-12 px-4 rounded-[10px] bg-background hairline text-sm focus:outline-none focus:border-gold transition" />
+        <textarea placeholder="mensagem" rows={6} className="w-full px-4 py-3 rounded-[10px] bg-background hairline text-sm focus:outline-none focus:border-gold transition resize-none" />
+        <button className="w-full h-12 rounded-[10px] bg-foreground text-background text-xs tracking-[0.25em] uppercase hover:bg-gold transition">Enviar</button>
       </form>
     </section>
   );

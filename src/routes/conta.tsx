@@ -31,9 +31,9 @@ function Account() {
       <div className="mt-16 glass rounded-md p-8 max-w-xl">
         <h2 className="font-serif text-2xl">Entrar</h2>
         <form className="mt-6 space-y-4" onSubmit={(e) => e.preventDefault()}>
-          <input type="email" placeholder="e-mail" className="w-full h-12 px-4 rounded-sm bg-background hairline text-sm focus:outline-none focus:border-gold transition" />
-          <input type="password" placeholder="senha" className="w-full h-12 px-4 rounded-sm bg-background hairline text-sm focus:outline-none focus:border-gold transition" />
-          <button className="w-full h-12 rounded-sm bg-foreground text-background text-xs tracking-[0.25em] uppercase hover:bg-gold transition">Entrar</button>
+          <input type="email" placeholder="e-mail" className="w-full h-12 px-4 rounded-[10px] bg-background hairline text-sm focus:outline-none focus:border-gold transition" />
+          <input type="password" placeholder="senha" className="w-full h-12 px-4 rounded-[10px] bg-background hairline text-sm focus:outline-none focus:border-gold transition" />
+          <button className="w-full h-12 rounded-[10px] bg-foreground text-background text-xs tracking-[0.25em] uppercase hover:bg-gold transition">Entrar</button>
         </form>
       </div>
     </section>

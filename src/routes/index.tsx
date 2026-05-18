@@ -46,11 +46,11 @@ function Home() {
               Artigos místicos e religiosos selecionados para elevar ambientes, rituais e conexões espirituais. Há quinze anos.
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
-              <Link to="/loja" className="group h-12 px-7 rounded-sm bg-foreground text-background text-xs tracking-[0.25em] uppercase inline-flex items-center gap-3 hover:bg-gold transition-colors">
+              <Link to="/loja" className="group h-12 px-7 rounded-[10px] bg-foreground text-background text-xs tracking-[0.25em] uppercase inline-flex items-center gap-3 hover:bg-gold transition-colors">
                 Explorar Produtos
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" strokeWidth={1.5} />
               </Link>
-              <Link to="/categorias" className="h-12 px-7 rounded-sm hairline text-xs tracking-[0.25em] uppercase inline-flex items-center hover:text-gold transition">
+              <Link to="/categorias" className="h-12 px-7 rounded-[10px] hairline text-xs tracking-[0.25em] uppercase inline-flex items-center hover:text-gold transition">
                 Categorias
               </Link>
             </div>
@@ -174,7 +174,7 @@ function Home() {
             <h2 className="mt-6 font-serif text-4xl md:text-6xl leading-[1.05]">
               Produtos escolhidos para transformar <span className="italic text-gold-gradient">energia, ambientes</span> e experiências.
             </h2>
-            <Link to="/loja" className="mt-10 inline-flex h-12 px-7 rounded-sm bg-foreground text-background text-xs tracking-[0.25em] uppercase items-center gap-3 hover:bg-gold transition">
+            <Link to="/loja" className="mt-10 inline-flex h-12 px-7 rounded-[10px] bg-foreground text-background text-xs tracking-[0.25em] uppercase items-center gap-3 hover:bg-gold transition">
               Entrar na loja <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
             </Link>
           </div>
@@ -237,9 +237,9 @@ function Home() {
                 type="email"
                 required
                 placeholder="seu e-mail"
-                className="flex-1 h-12 px-5 rounded-sm bg-background hairline text-sm focus:outline-none focus:border-gold transition"
+                className="flex-1 h-12 px-5 rounded-[10px] bg-background hairline text-sm focus:outline-none focus:border-gold transition"
               />
-              <button className="h-12 px-7 rounded-sm bg-foreground text-background text-xs tracking-[0.25em] uppercase hover:bg-gold transition">
+              <button className="h-12 px-7 rounded-[10px] bg-foreground text-background text-xs tracking-[0.25em] uppercase hover:bg-gold transition">
                 Assinar
               </button>
             </form>

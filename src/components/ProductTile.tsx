@@ -24,7 +24,7 @@ export function ProductTile({ product, index = 0 }: { product: Product; index?: 
           </div>
           <div className="absolute inset-0 bg-veil opacity-70 pointer-events-none" />
           {product.premium && (
-            <span className="absolute left-3 top-3 text-[10px] tracking-[0.2em] uppercase text-gold px-2 py-1 glass rounded-sm">
+            <span className="absolute left-3 top-3 text-[10px] tracking-[0.2em] uppercase text-gold px-2 py-1 glass rounded-[10px]">
               Premium
             </span>
           )}
@@ -49,7 +49,7 @@ export function ProductTile({ product, index = 0 }: { product: Product; index?: 
                 e.preventDefault();
                 add(product.id);
               }}
-              className="w-full h-10 rounded-sm bg-foreground text-background text-xs tracking-[0.2em] uppercase hover:bg-gold transition-colors"
+              className="w-full h-10 rounded-[10px] bg-foreground text-background text-xs tracking-[0.2em] uppercase hover:bg-gold transition-colors"
             >
               Adicionar
             </button>

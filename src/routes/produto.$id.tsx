@@ -46,7 +46,7 @@ function ProductPage() {
             <div className="absolute inset-0 flex items-center justify-center text-muted-foreground/40">
               <ImageIcon className="h-20 w-20" strokeWidth={0.8} />
             </div>
-            <span className="absolute top-4 left-4 text-[10px] tracking-[0.3em] uppercase text-gold px-2 py-1 glass rounded-sm">
+            <span className="absolute top-4 left-4 text-[10px] tracking-[0.3em] uppercase text-gold px-2 py-1 glass rounded-[10px]">
               Galeria {main + 1} / 4
             </span>
           </div>
@@ -56,7 +56,7 @@ function ProductPage() {
                 key={i}
                 onClick={() => setMain(i)}
                 className={cn(
-                  "placeholder-tile aspect-square rounded-sm hairline transition",
+                  "placeholder-tile aspect-square rounded-[10px] hairline transition",
                   main === i ? "ring-1 ring-gold" : "opacity-70 hover:opacity-100"
                 )}
                 aria-label={`Imagem ${i + 1}`}
@@ -102,7 +102,7 @@ function ProductPage() {
           </div>
 
           <div className="mt-10 flex items-center gap-4">
-            <div className="flex items-center hairline rounded-sm">
+            <div className="flex items-center hairline rounded-[10px]">
               <button onClick={() => setQty(Math.max(1, qty - 1))} className="h-12 w-12 flex items-center justify-center hover:text-gold transition" aria-label="Diminuir">
                 <Minus className="h-3 w-3" />
               </button>
@@ -113,28 +113,28 @@ function ProductPage() {
             </div>
             <button
               onClick={() => add(product.id, qty)}
-              className="flex-1 h-12 rounded-sm bg-foreground text-background text-xs tracking-[0.25em] uppercase inline-flex items-center justify-center gap-3 hover:bg-gold transition"
+              className="flex-1 h-12 rounded-[10px] bg-foreground text-background text-xs tracking-[0.25em] uppercase inline-flex items-center justify-center gap-3 hover:bg-gold transition"
             >
               <ShoppingBag className="h-4 w-4" strokeWidth={1.5} /> Adicionar à sacola
             </button>
             <button
               onClick={() => toggleFav(product.id)}
               aria-label="Favoritar"
-              className="h-12 w-12 rounded-sm hairline flex items-center justify-center hover:text-gold transition"
+              className="h-12 w-12 rounded-[10px] hairline flex items-center justify-center hover:text-gold transition"
             >
               <Heart className={cn("h-4 w-4", fav && "fill-gold text-gold")} strokeWidth={1.5} />
             </button>
           </div>
 
           <div className="mt-10 grid grid-cols-2 gap-4 text-sm">
-            <div className="glass p-4 rounded-sm flex items-start gap-3">
+            <div className="glass p-4 rounded-[10px] flex items-start gap-3">
               <Truck className="h-4 w-4 text-gold mt-0.5" strokeWidth={1.5} />
               <div>
                 <div className="text-foreground">Envio cuidadoso</div>
                 <div className="text-muted-foreground text-xs mt-1">Embalagem ritual em todo Brasil</div>
               </div>
             </div>
-            <div className="glass p-4 rounded-sm flex items-start gap-3">
+            <div className="glass p-4 rounded-[10px] flex items-start gap-3">
               <Shield className="h-4 w-4 text-gold mt-0.5" strokeWidth={1.5} />
               <div>
                 <div className="text-foreground">Garantia São Gerônimo</div>
