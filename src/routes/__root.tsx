@@ -4,6 +4,7 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useRouterState,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
@@ -13,6 +14,7 @@ import { CartProvider } from "@/lib/cart";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { WhatsAppFab } from "@/components/WhatsAppFab";
+import { Preloader } from "@/components/Preloader";
 
 function NotFoundComponent() {
   return (
@@ -95,16 +97,20 @@ function RootShell({ children }: { children: React.ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const pathname = useRouterState({ select: (state) => state.location.pathname });
   return (
     <QueryClientProvider client={queryClient}>
       <CartProvider>
         <div className="min-h-screen flex flex-col bg-background">
           <SiteHeader />
           <main className="flex-1 pt-[88px]">
-            <Outlet />
+            <div key={pathname} className="page-fade">
+              <Outlet />
+            </div>
           </main>
           <SiteFooter />
           <WhatsAppFab />
+          <Preloader />
         </div>
       </CartProvider>
     </QueryClientProvider>
