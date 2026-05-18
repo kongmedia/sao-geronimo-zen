@@ -18,13 +18,13 @@ export const Route = createFileRoute("/loja")({
 function Shop() {
   const [filters, setFilters] = useState<Filters>(defaultFilters);
 
-  const list = useMemo(() => products.filter((p) => {
+  const list = products.filter((p) => {
     if (filters.categories.length > 0 && !filters.categories.includes(p.category)) return false;
     if (p.price < filters.minPrice || p.price > filters.maxPrice) return false;
     if (filters.premiumOnly && !p.premium) return false;
     if (p.rating < filters.minRating) return false;
     return true;
-  }), [filters]);
+  });
 
   return (
     <div>
