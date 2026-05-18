@@ -62,7 +62,7 @@ export function SiteHeader() {
         <div className="bg-foreground text-background text-[11px] tracking-[0.25em] uppercase py-2 text-center">
           15 anos consagrando lares · Frete ritualístico para todo Brasil
         </div>
-        <header className={`transition-all duration-500 glass-strong ${scrolled ? "shadow-card" : ""}`}>
+        <header className={`transition-all duration-500 bg-background border-b border-border ${scrolled ? "shadow-card" : ""}`}>
           <div className="max-w-[1400px] mx-auto px-6 lg:px-10 h-16 flex items-center justify-between gap-6">
             <button
               onClick={() => setOpen(true)}
