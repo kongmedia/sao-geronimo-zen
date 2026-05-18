@@ -5,7 +5,7 @@ import { useCart } from "@/lib/cart";
 import { categories } from "@/lib/catalog";
 
 export function SiteHeader() {
-  const { count, favCount } = useCart();
+  const { count, favCount, openDrawer } = useCart();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [megaOpen, setMegaOpen] = useState(false);
