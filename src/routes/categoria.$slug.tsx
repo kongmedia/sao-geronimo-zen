@@ -90,7 +90,7 @@ function CategoryPage() {
               Curadoria desta categoria em preparação. Em breve.
             </div>
           ) : (
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-7">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-7">
               {list.map((p, i) => <ProductTile key={p.id} product={p} index={i} />)}
             </div>
           )}
